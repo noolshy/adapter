@@ -115,227 +115,12 @@ body {
     0% { background-position: 0 0; }
     100% { background-position: 100px 100px; }
 }
-/* ==================== АВАТАРКА С ЛОКАЛЬНЫМ ФАЙЛОМ ==================== */
-.avatar-container {
-    position: relative;
-    width: 220px;
-    height: 220px;
-    margin: 0 auto 20px;
-    border: 4px solid rgba(139, 0, 0, 0.8);
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 
-        0 0 50px rgba(139, 0, 0, 0.5),
-        inset 0 0 30px rgba(0, 0, 0, 0.9);
-    background: #000;
+
+@keyframes crossFloat {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 120px 60px, -200px 100px; }
 }
 
-/* Основная аватарка */
-.avatar {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: 
-        grayscale(0.4)
-        contrast(1.3)
-        brightness(0.7)
-        sepia(0.3) 
-        hue-rotate(-10deg);
-    transition: all 0.8s cubic-bezier(0.215, 0.610, 0.355, 1);
-    position: relative;
-    z-index: 2;
-}
-
-.avatar:hover {
-    transform: scale(1.05) rotate(2deg);
-    filter: 
-        grayscale(0.2)
-        contrast(1.5)
-        brightness(0.8)
-        sepia(0.5);
-}
-
-/* Запасная аватарка */
-.fallback-avatar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: rgba(20, 0, 0, 0.9);
-    z-index: 1;
-}
-
-.fallback-avatar i {
-    font-size: 3rem;
-    color: #8b0000;
-    margin-bottom: 10px;
-    opacity: 0.7;
-    animation: fallbackPulse 2s infinite;
-}
-
-@keyframes fallbackPulse {
-    0%, 100% { opacity: 0.5; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.1); }
-}
-
-.fallback-avatar span {
-    color: #770000;
-    font-size: 0.8rem;
-    text-align: center;
-    padding: 0 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* ==================== ИНСТРУКЦИЯ ПО АВАТАРКЕ ==================== */
-.avatar-instruction {
-    margin: 15px auto 30px;
-    padding: 15px;
-    background: 
-        linear-gradient(135deg, 
-            rgba(20, 0, 0, 0.8) 0%, 
-            rgba(30, 0, 0, 0.7) 100%);
-    border: 1px solid rgba(139, 0, 0, 0.4);
-    border-radius: 2px;
-    max-width: 400px;
-    animation: pulseInstruction 3s infinite alternate;
-}
-
-@keyframes pulseInstruction {
-    0% { 
-        opacity: 0.7; 
-        box-shadow: 0 0 10px rgba(139, 0, 0, 0.2);
-    }
-    100% { 
-        opacity: 0.9; 
-        box-shadow: 0 0 15px rgba(139, 0, 0, 0.4);
-    }
-}
-
-.instruction-text {
-    color: #8b0000;
-    font-size: 0.9rem;
-    text-align: center;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin: 0 0 5px 0;
-    font-weight: 700;
-}
-
-.instruction-text i {
-    color: #8b0000;
-    margin-right: 8px;
-    animation: iconPulse 2s infinite;
-}
-
-@keyframes iconPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-.instruction-details {
-    color: #660000;
-    font-size: 0.75rem;
-    text-align: center;
-    letter-spacing: 1px;
-    margin: 0;
-    opacity: 0.8;
-}
-
-/* Усиленные эффекты для локальной аватарки */
-.avatar[src*="img/"] {
-    filter: 
-        grayscale(0.3)
-        contrast(1.4)
-        brightness(0.8)
-        sepia(0.2)
-        hue-rotate(-15deg)
-        drop-shadow(0 0 10px rgba(139, 0, 0, 0.3));
-}
-
-/* Остальные эффекты аватарки (уже есть в вашем коде, проверьте чтобы были) */
-.avatar-blood {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 25% 25%, 
-            transparent 30%, 
-            rgba(139, 0, 0, 0.4) 60%,
-            transparent 70%),
-        radial-gradient(circle at 75% 75%, 
-            transparent 40%, 
-            rgba(255, 0, 0, 0.3) 65%,
-            transparent 75%);
-    z-index: 2;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    animation: bloodShift 8s infinite alternate;
-}
-
-@keyframes bloodShift {
-    0% { 
-        background-position: 0 0, 100% 100%;
-        opacity: 0.8;
-    }
-    100% { 
-        background-position: 10px 10px, 90% 90%;
-        opacity: 1;
-    }
-}
-
-.avatar-glow {
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(139, 0, 0, 0.2) 0%, transparent 70%);
-    z-index: 0;
-    opacity: 0.5;
-    animation: glowPulse 3s infinite alternate;
-}
-
-@keyframes glowPulse {
-    0% { opacity: 0.3; transform: scale(1); }
-    100% { opacity: 0.6; transform: scale(1.05); }
-}
-
-.blood-drip {
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 3px;
-    height: 40px;
-    background: linear-gradient(to bottom, 
-        #8b0000 0%, 
-        rgba(139, 0, 0, 0.8) 30%, 
-        rgba(139, 0, 0, 0.3) 70%, 
-        transparent 100%);
-    filter: blur(1px);
-    animation: slowDrip 4s infinite ease-in-out;
-    z-index: 3;
-}
-
-@keyframes slowDrip {
-    0%, 100% { 
-        height: 40px; 
-        opacity: 0.6;
-    }
-    50% { 
-        height: 60px; 
-        opacity: 1;
-    }
-}
 /* ==================== ГЛАВНЫЙ КОНТЕЙНЕР ==================== */
 .container {
     position: relative;
@@ -597,6 +382,7 @@ body {
         drop-shadow(0 0 10px rgba(139, 0, 0, 0.3));
 }
 
+/* Остальные эффекты аватарки */
 .avatar-blood {
     position: absolute;
     top: 0;
@@ -690,31 +476,10 @@ body {
         0 0 30px rgba(139, 0, 0, 0.5),
         0 0 60px rgba(139, 0, 0, 0.3);
     letter-spacing: 4px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     text-transform: uppercase;
     position: relative;
-    padding-bottom: 15px;
     font-family: 'Orbitron', sans-serif;
-}
-
-.nickname::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 25%;
-    width: 50%;
-    height: 2px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        #8b0000, 
-        transparent);
-    box-shadow: 0 0 10px #8b0000;
-}
-
-.username-wrapper {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 30px;
 }
 
 .username {
@@ -725,24 +490,9 @@ body {
     text-transform: uppercase;
     opacity: 0.8;
     font-family: 'Audiowide', cursive;
-}
-
-.username-line {
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(139, 0, 0, 0.6), 
-        transparent);
-    animation: linePulse 3s infinite;
-}
-
-@keyframes linePulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
 }
 
 /* ==================== СТАТУС ==================== */
