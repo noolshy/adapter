@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Киберпанк | Смертников</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Анимированный кровавый туман -->
+    <div class="blood-fog"></div>
+    
+    <!-- Анимированные тёмные кресты -->
+    <div class="blood-crosses"></div>
+    
+    <!-- Анимированный мрачный фон -->
+    <div class="cyber-background"></div>
+    
+    <!-- Глубокие тени -->
+    <div class="deep-shadows"></div>
+    
+    <!-- Главный контейнер -->
+    <main class="container">
+        <!-- Аватар и информация -->
+        <section class="profile-section">
+            <div class="avatar-container">
+                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Смертников" class="avatar" id="avatar">
+                <div class="avatar-blood"></div>
+                <div class="blood-drip"></div>
+                <div class="avatar-glow"></div>
+            </div>
+            
+<div class="profile-info">
+                <h1 class="nickname">ЗОРФ</h1>
+                <div class="username-wrapper">
+                    <span class="username">market noolshy</span>
+                    <div class="username-line"></div>
+                </div>
+
+                
+                <div class="status">
+                    <div class="status-dot"></div>
+                    <span class="status-text">ЗОРФ и NOOLSHY MARKET — не два отдельных понятия. Это цифровой симбиоз, где одно невозможно без другого. Зорф создал Noolshy, но и Noolshy создал Зорфа. Они — цифровые близнецы, рождённые в одном взрыве данных.</span>
+                    <div class="status-pulse"></div>
+                </div>
+                
+                <div class="price-text">
+                    <div class="price-line">
+                        <i class="fas fa-skull-crossbones price-icon"></i>
+                        Протоколы:
+                        <i class="fas fa-skull-crossbones price-icon"></i>
+                    </div>
+                    <div class="price-details">
+                        ZP (Zorf Protocol) — Общение между частями системы
+                    </div>
+                    <div class="price-details">
+                        NMTP (Noolshy Market Transfer Protocol) — Передача товаров и данных
+                    </div>
+                    <div class="price-drip"></div>
+                </div>
+            </div>
+            
+            <div class="profile-glitch"></div>
+        </section>
+
+        <!-- Кнопки на одном уровне -->
+        <section class="buttons-section">
+            <div class="buttons-row">
+                <a href="https://noolshy.github.io/market/" class="blood-btn channel-btn" target="_blank">
+                    <div class="btn-glow-red"></div>
+                    <div class="btn-content">
+                        <i class="fab fa-telegram btn-icon"></i>
+                        <div class="btn-text-wrapper">
+                            <span class="btn-text">Market</span>
+                            <div class="btn-underline"></div>
+                        </div>
+                    </div>
+                    <div class="blood-drip-btn"></div>
+                    <div class="btn-pulse"></div>
+                    <div class="btn-noise"></div>
+                </a>
+
+                <a href="https://noolshy.github.io/fame/" class="blood-btn chat-btn" target="_blank">
+                    <div class="btn-glow-red"></div>
+                    <div class="btn-content">
+                        <i class="fas fa-comments btn-icon"></i>
+                        <div class="btn-text-wrapper">
+                            <span class="btn-text">Fame list</span>
+                            <div class="btn-underline"></div>
+                        </div>
+                    </div>
+                    <div class="blood-drip-btn"></div>
+                    <div class="btn-pulse"></div>
+                    <div class="btn-noise"></div>
+                </a>
+            </div>
+            
+            <div class="buttons-footer">
+                <div class="footer-line"></div>
+                <p class="footer-text">ВХОД В ТЕМНОТУ</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Аудио для эффектов -->
+    <audio id="hover-sound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-sci-fi-horror-alarm-905.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Кровавый курсор -->
+    <div id="blood-cursor"></div>
+
+    <!-- Статические помехи -->
+    <div class="static-overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1094 @@
+/* ==================== ОБЩИЕ СТИЛИ ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rajdhani', 'Courier New', monospace;
+    cursor: none !important;
+}
+
+body {
+    background: #000000;
+    color: #8b0000;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: 
+        radial-gradient(ellipse at 15% 20%, rgba(30, 0, 0, 0.4) 0%, transparent 40%),
+        radial-gradient(ellipse at 85% 80%, rgba(60, 0, 0, 0.3) 0%, transparent 40%),
+        linear-gradient(135deg, #000000 0%, #0a0000 50%, #000000 100%);
+}
+
+/* ==================== ФОНОВЫЕ ЭФФЕКТЫ ==================== */
+.cyber-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(88, 0, 0, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(139, 0, 0, 0.1) 0%, transparent 40%),
+        linear-gradient(135deg, #000000 0%, #0a0000 30%, #000000 70%);
+    z-index: 1;
+    animation: deepPulse 15s infinite alternate;
+}
+
+@keyframes deepPulse {
+    0% { opacity: 0.95; filter: brightness(0.8); }
+    50% { opacity: 1; filter: brightness(0.9); }
+    100% { opacity: 0.95; filter: brightness(0.8); }
+}
+
+.blood-fog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><filter id="n"><feTurbulence baseFrequency="0.01" numOctaves="5"/><feDisplacementMap in="SourceGraphic" scale="30"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.1" fill="%23220000"/></svg>');
+    background-size: 400px;
+    opacity: 0.4;
+    animation: darkFog 40s linear infinite;
+    z-index: 2;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
+
+@keyframes darkFog {
+    0% { background-position: 0 0, 100px 100px; }
+    100% { background-position: 400px 400px, 0 0; }
+}
+
+.blood-crosses {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><path d="M60,10 L60,110 M10,60 L110,60" stroke="%23330000" stroke-width="1.5" opacity="0.15"/></svg>'),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><path d="M100,20 L100,180 M20,100 L180,100" stroke="%23440000" stroke-width="2" opacity="0.1"/></svg>');
+    background-size: 120px 120px, 200px 200px;
+    opacity: 0.3;
+    animation: crossFloat 90s linear infinite;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.deep-shadows {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.9) 70%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.static-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(20, 0, 0, 0.1) 2px,
+            rgba(20, 0, 0, 0.1) 4px
+        );
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0.05;
+    animation: staticNoise 0.1s infinite;
+}
+
+@keyframes staticNoise {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+/* ==================== ГЛАВНЫЙ КОНТЕЙНЕР ==================== */
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+}
+
+/* ==================== СЕКЦИЯ ПРОФИЛЯ ==================== */
+.profile-section {
+    text-align: center;
+    margin-bottom: 60px;
+    width: 100%;
+    max-width: 900px;
+    padding: 50px;
+    background: 
+        linear-gradient(145deg, rgba(5, 0, 0, 0.95) 0%, rgba(15, 0, 0, 0.9) 100%),
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(40, 0, 0, 0.2) 10px,
+            rgba(40, 0, 0, 0.2) 20px
+        );
+    border: 3px solid rgba(80, 0, 0, 0.7);
+    border-radius: 2px;
+    box-shadow: 
+        0 0 60px rgba(139, 0, 0, 0.3),
+        inset 0 0 40px rgba(0, 0, 0, 0.7),
+        0 10px 30px rgba(0, 0, 0, 0.8);
+    position: relative;
+    overflow: hidden;
+    animation: darkAppear 1.5s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+@keyframes darkAppear {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+        filter: brightness(0.3) blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: brightness(1) blur(0);
+    }
+}
+
+.profile-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(139, 0, 0, 0.8), 
+        transparent);
+    animation: scanline 4s linear infinite;
+    box-shadow: 0 0 10px rgba(139, 0, 0, 0.8);
+}
+
+.profile-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 0, 0, 0.5), 
+        transparent);
+    animation: scanlineReverse 5s linear infinite 2s;
+}
+
+@keyframes scanline {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes scanlineReverse {
+    0% { right: -100%; }
+    100% { right: 100%; }
+}
+
+.profile-glitch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 45%, 
+        rgba(139, 0, 0, 0.1) 50%, 
+        transparent 55%);
+    opacity: 0;
+    animation: glitch 10s infinite;
+    pointer-events: none;
+}
+
+@keyframes glitch {
+    0%, 100% { opacity: 0; transform: translateX(0); }
+    95% { opacity: 0; transform: translateX(0); }
+    96% { opacity: 0.3; transform: translateX(-5px); }
+    97% { opacity: 0.1; transform: translateX(5px); }
+    98% { opacity: 0.3; transform: translateX(-5px); }
+    99% { opacity: 0.1; transform: translateX(5px); }
+}
+
+/* ==================== АВАТАР ==================== */
+.avatar-container {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 40px;
+    border: 4px solid rgba(139, 0, 0, 0.8);
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 
+        0 0 50px rgba(139, 0, 0, 0.5),
+        inset 0 0 30px rgba(0, 0, 0, 0.9);
+    background: #000;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: 
+        grayscale(0.4)
+        contrast(1.3)
+        brightness(0.7)
+        sepia(0.3) 
+        hue-rotate(-10deg);
+    transition: all 0.8s cubic-bezier(0.215, 0.610, 0.355, 1);
+    position: relative;
+    z-index: 1;
+}
+
+.avatar:hover {
+    transform: scale(1.05) rotate(2deg);
+    filter: 
+        grayscale(0.2)
+        contrast(1.5)
+        brightness(0.8)
+        sepia(0.5);
+}
+
+.avatar-blood {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 25% 25%, 
+            transparent 30%, 
+            rgba(139, 0, 0, 0.4) 60%,
+            transparent 70%),
+        radial-gradient(circle at 75% 75%, 
+            transparent 40%, 
+            rgba(255, 0, 0, 0.3) 65%,
+            transparent 75%);
+    z-index: 2;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    animation: bloodShift 8s infinite alternate;
+}
+
+@keyframes bloodShift {
+    0% { 
+        background-position: 0 0, 100% 100%;
+        opacity: 0.8;
+    }
+    100% { 
+        background-position: 10px 10px, 90% 90%;
+        opacity: 1;
+    }
+}
+
+.avatar-glow {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139, 0, 0, 0.2) 0%, transparent 70%);
+    z-index: 0;
+    opacity: 0.5;
+    animation: glowPulse 3s infinite alternate;
+}
+
+@keyframes glowPulse {
+    0% { opacity: 0.3; transform: scale(1); }
+    100% { opacity: 0.6; transform: scale(1.05); }
+}
+
+.blood-drip {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 40px;
+    background: linear-gradient(to bottom, 
+        #8b0000 0%, 
+        rgba(139, 0, 0, 0.8) 30%, 
+        rgba(139, 0, 0, 0.3) 70%, 
+        transparent 100%);
+    filter: blur(1px);
+    animation: slowDrip 4s infinite ease-in-out;
+    z-index: 3;
+}
+
+@keyframes slowDrip {
+    0%, 100% { 
+        height: 40px; 
+        opacity: 0.6;
+    }
+    50% { 
+        height: 60px; 
+        opacity: 1;
+    }
+}
+
+/* ==================== ИНФОРМАЦИЯ ПРОФИЛЯ ==================== */
+.profile-info {
+    margin-top: 30px;
+}
+
+.nickname {
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: #660000;
+    text-shadow: 
+        2px 2px 0 #000,
+        4px 4px 0 #220000,
+        0 0 30px rgba(139, 0, 0, 0.5),
+        0 0 60px rgba(139, 0, 0, 0.3);
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 15px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.nickname::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        #8b0000, 
+        transparent);
+    box-shadow: 0 0 10px #8b0000;
+}
+
+.username-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.username {
+    font-size: 1.4rem;
+    color: #550000;
+    letter-spacing: 6px;
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.8;
+    font-family: 'Audiowide', cursive;
+}
+
+.username-line {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(139, 0, 0, 0.6), 
+        transparent);
+    animation: linePulse 3s infinite;
+}
+
+@keyframes linePulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* ==================== СТАТУС ==================== */
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 40px;
+    background: 
+        linear-gradient(135deg, 
+            rgba(10, 0, 0, 0.9) 0%, 
+            rgba(20, 0, 0, 0.8) 100%);
+    border: 2px solid rgba(80, 0, 0, 0.6);
+    border-radius: 1px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.status::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 0, 0, 0.7), 
+        transparent);
+    animation: statusScan 3s linear infinite;
+}
+
+@keyframes statusScan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.status-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #8b0000;
+    box-shadow: 
+        0 0 20px #8b0000,
+        inset 0 0 10px #000;
+    animation: slowBlink 3s infinite;
+    position: relative;
+    z-index: 2;
+}
+
+.status-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    background: #ff0000;
+    border-radius: 50%;
+    filter: blur(2px);
+}
+
+@keyframes slowBlink {
+    0%, 100% { 
+        opacity: 0.7; 
+        box-shadow: 
+            0 0 20px #8b0000,
+            inset 0 0 10px #000;
+    }
+    50% { 
+        opacity: 1; 
+        box-shadow: 
+            0 0 30px #ff0000,
+            0 0 50px rgba(255, 0, 0, 0.3),
+            inset 0 0 15px #000;
+    }
+}
+
+.status-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 1px;
+    background: rgba(139, 0, 0, 0.1);
+    animation: statusPulse 2s infinite;
+}
+
+@keyframes statusPulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+}
+
+.status-text {
+    color: #990000;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000;
+    position: relative;
+    z-index: 2;
+}
+
+/* ==================== ПРАЙС ==================== */
+.price-text {
+    margin-top: 40px;
+    padding: 25px;
+    background: 
+        linear-gradient(135deg, 
+            rgba(15, 0, 0, 0.9) 0%, 
+            rgba(25, 0, 0, 0.8) 100%);
+    border: 2px solid rgba(60, 0, 0, 0.5);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        inset 0 0 30px rgba(0, 0, 0, 0.7),
+        0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.price-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        #8b0000 0%, 
+        #660000 50%, 
+        #8b0000 100%);
+    box-shadow: 0 0 15px rgba(139, 0, 0, 0.7);
+}
+
+.price-icon {
+    color: #8b0000;
+    margin: 0 15px;
+    font-size: 1.5rem;
+    animation: iconFloat 2s infinite alternate;
+}
+
+@keyframes iconFloat {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
+}
+
+.price-line {
+    color: #990000;
+    font-size: 1.9rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    text-shadow: 
+        2px 2px 0 #000,
+        0 0 20px rgba(139, 0, 0, 0.5);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.price-details {
+    color: #770000;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px #000;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+}
+
+.price-drip {
+    position: absolute;
+    bottom: 10px;
+    left: 20%;
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(to bottom, 
+        rgba(139, 0, 0, 0.6), 
+        transparent);
+    animation: priceDrip 3s infinite;
+}
+
+@keyframes priceDrip {
+    0%, 100% { height: 20px; opacity: 0.4; }
+    50% { height: 40px; opacity: 0.8; }
+}
+
+/* ==================== КНОПКИ ==================== */
+.buttons-section {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 40px;
+    animation: darkAppear 1.5s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+.buttons-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.blood-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 280px;
+    background: 
+        radial-gradient(circle at 30% 30%, 
+            rgba(20, 0, 0, 0.95) 0%, 
+            rgba(10, 0, 0, 0.9) 70%),
+        repeating-radial-gradient(
+            circle at 50% 50%,
+            transparent,
+            transparent 10px,
+            rgba(40, 0, 0, 0.2) 10px,
+            rgba(40, 0, 0, 0.2) 20px
+        );
+    border: 4px solid rgba(80, 0, 0, 0.7);
+    border-radius: 50%;
+    text-decoration: none;
+    color: #8b0000;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    cursor: none;
+    box-shadow: 
+        0 0 60px rgba(139, 0, 0, 0.4),
+        inset 0 0 40px rgba(0, 0, 0, 0.8),
+        0 10px 40px rgba(0, 0, 0, 0.9);
+    animation: darkFloat 4s ease-in-out infinite alternate;
+}
+
+.channel-btn {
+    animation-delay: 0s;
+}
+
+.chat-btn {
+    animation-delay: 2s;
+}
+
+@keyframes darkFloat {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        box-shadow: 
+            0 0 60px rgba(139, 0, 0, 0.4),
+            inset 0 0 40px rgba(0, 0, 0, 0.8),
+            0 10px 40px rgba(0, 0, 0, 0.9);
+    }
+    100% {
+        transform: translateY(-25px) rotate(3deg);
+        box-shadow: 
+            0 0 80px rgba(139, 0, 0, 0.6),
+            inset 0 0 50px rgba(0, 0, 0, 0.9),
+            0 20px 50px rgba(0, 0, 0, 1);
+    }
+}
+
+.blood-btn:hover {
+    transform: scale(1.1) rotate(-5deg);
+    border-color: rgba(139, 0, 0, 0.9);
+    box-shadow: 
+        0 0 120px rgba(139, 0, 0, 0.8),
+        inset 0 0 60px rgba(0, 0, 0, 1),
+        0 30px 60px rgba(0, 0, 0, 1);
+    background: 
+        radial-gradient(circle at 30% 30%, 
+            rgba(25, 0, 0, 0.95) 0%, 
+            rgba(15, 0, 0, 0.9) 70%);
+    animation-play-state: paused;
+}
+
+.blood-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: conic-gradient(
+        from 0deg at 50% 50%,
+        transparent 0%,
+        rgba(139, 0, 0, 0.3) 10%,
+        transparent 20%,
+        rgba(139, 0, 0, 0.2) 30%,
+        transparent 40%
+    );
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.blood-btn:hover::before {
+    opacity: 1;
+    animation: rotateConic 3s linear infinite;
+}
+
+@keyframes rotateConic {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.blood-drip-btn {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 40px;
+    background: linear-gradient(to bottom, 
+        rgba(139, 0, 0, 0.8), 
+        rgba(139, 0, 0, 0.3) 70%, 
+        transparent);
+    filter: blur(1.5px);
+    animation: dripBtn 3s infinite ease-in-out;
+    opacity: 0.8;
+    z-index: 2;
+}
+
+.chat-btn .blood-drip-btn {
+    animation-delay: 1s;
+}
+
+@keyframes dripBtn {
+    0%, 100% { height: 40px; opacity: 0.6; }
+    50% { height: 60px; opacity: 1; }
+}
+
+.btn-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(139, 0, 0, 0.2);
+    animation: darkPulse 3s infinite;
+    z-index: 1;
+}
+
+@keyframes darkPulse {
+    0% { 
+        width: 0; 
+        height: 0; 
+        opacity: 0.8; 
+        box-shadow: 0 0 0 0 rgba(139, 0, 0, 0.4);
+    }
+    100% { 
+        width: 320px; 
+        height: 320px; 
+        opacity: 0; 
+        box-shadow: 0 0 0 20px rgba(139, 0, 0, 0);
+    }
+}
+
+.btn-noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 1px,
+            rgba(20, 0, 0, 0.1) 1px,
+            rgba(20, 0, 0, 0.1) 2px
+        );
+    opacity: 0.1;
+    animation: btnStatic 0.2s infinite;
+    pointer-events: none;
+}
+
+@keyframes btnStatic {
+    0% { background-position: 0 0; }
+    100% { background-position: 5px 5px; }
+}
+
+.btn-glow-red {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(139, 0, 0, 0.2), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.blood-btn:hover .btn-glow-red {
+    opacity: 1;
+}
+
+.btn-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.btn-icon {
+    font-size: 4.5rem;
+    color: #660000;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.blood-btn:hover .btn-icon {
+    color: #8b0000;
+    transform: scale(1.4);
+    text-shadow: 
+        0 0 30px rgba(139, 0, 0, 0.8),
+        0 0 60px rgba(139, 0, 0, 0.4);
+    animation: iconThrob 0.6s ease infinite alternate;
+}
+
+@keyframes iconThrob {
+    0% { transform: scale(1.4); }
+    100% { transform: scale(1.6); }
+}
+
+.btn-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-text {
+    font-size: 1.9rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #770000;
+    transition: all 0.4s ease;
+    text-align: center;
+    text-shadow: 
+        2px 2px 0 #000,
+        0 0 20px rgba(139, 0, 0, 0.4);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.blood-btn:hover .btn-text {
+    color: #990000;
+    letter-spacing: 5px;
+    text-shadow: 
+        2px 2px 0 #000,
+        0 0 30px rgba(139, 0, 0, 0.8),
+        0 0 60px rgba(139, 0, 0, 0.4);
+}
+
+.btn-underline {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        #8b0000, 
+        transparent);
+    transition: all 0.4s ease;
+}
+
+.blood-btn:hover .btn-underline {
+    width: 100%;
+    box-shadow: 0 0 10px #8b0000;
+}
+
+/* ==================== ФУТЕР КНОПОК ==================== */
+.buttons-footer {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.footer-line {
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(139, 0, 0, 0.4), 
+        transparent);
+    margin: 0 auto 15px;
+    position: relative;
+}
+
+.footer-line::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: #8b0000;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #8b0000;
+}
+
+.footer-text {
+    color: #550000;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    font-weight: 700;
+}
+
+/* ==================== КУРСОР ==================== */
+#blood-cursor {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(139, 0, 0, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: 
+        width 0.3s,
+        height 0.3s,
+        border-color 0.3s,
+        background 0.3s;
+    box-shadow: 
+        0 0 20px rgba(139, 0, 0, 0.6),
+        inset 0 0 10px rgba(0, 0, 0, 0.7);
+    background: rgba(20, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+}
+
+/* ==================== АДАПТИВНОСТЬ ==================== */
+@media (max-width: 1024px) {
+    .buttons-row {
+        gap: 40px;
+    }
+    
+    .blood-btn {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .nickname {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 15px;
+        justify-content: flex-start;
+        padding-top: 40px;
+    }
+    
+    .profile-section {
+        padding: 40px 25px;
+        margin-bottom: 50px;
+    }
+    
+    .avatar-container {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .nickname {
+        font-size: 2.4rem;
+        letter-spacing: 3px;
+    }
+    
+    .username {
+        font-size: 1.2rem;
+        letter-spacing: 4px;
+    }
+    
+    .price-line {
+        font-size: 1.6rem;
+    }
+    
+    .price-details {
+        font-size: 1rem;
+    }
+    
+    .buttons-row {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .blood-btn {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .btn-icon {
+        font-size: 4rem;
+    }
+    
+    .btn-text {
+        font-size: 1.7rem;
+    }
+    
+    #blood-cursor {
+        display: none;
+    }
+    
+    body, a, button {
+        cursor: default !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .nickname {
+        font-size: 2rem;
+    }
+    
+    .username {
+        font-size: 1rem;
+        letter-spacing: 3px;
+    }
+    
+    .status {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    .status-text {
+        font-size: 0.95rem;
+        text-align: center;
+        line-height: 1.5;
+    }
+    
+    .price-text {
+        padding: 20px;
+    }
+    
+    .price-line {
+        font-size: 1.4rem;
+    }
+    
+    .price-details {
+        font-size: 0.9rem;
+    }
+    
+    .blood-btn {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .btn-icon {
+        font-size: 3.5rem;
+    }
+    
+    .btn-text {
+        font-size: 1.5rem;
+    }
+}
