@@ -23,7 +23,7 @@ function handleAvatarError(img) {
     }
 }
 
-// В начале initAvatarAnimation добавьте:
+// Анимация аватарки
 function initAvatarAnimation() {
     const avatar = document.getElementById('avatar');
     if (!avatar) return;
@@ -76,6 +76,7 @@ function initAvatarAnimation() {
     }, 3000);
 }
 
+// Основная инициализация
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🩸 Мрачный киберпанк активирован');
     
@@ -110,8 +111,17 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
         }, 2000);
     }
+    
+    // Анимация разделителя
+    const separatorDot = document.querySelector('.separator-dot');
+    if (separatorDot) {
+        setInterval(() => {
+            separatorDot.style.backgroundColor = `hsl(${Math.random() * 10 + 350}, 100%, 30%)`;
+        }, 2000);
+    }
 });
 
+// Эффекты для кнопок
 function initBloodEffects() {
     const buttons = document.querySelectorAll('.blood-btn');
     
@@ -172,6 +182,7 @@ function initBloodEffects() {
     });
 }
 
+// Частицы для эффектов
 function createDarkParticles(element) {
     const rect = element.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
@@ -222,6 +233,7 @@ function createDarkParticles(element) {
     }
 }
 
+// Эффект взрыва
 function createDarkExplosion(element) {
     const rect = element.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
@@ -275,6 +287,7 @@ function createDarkExplosion(element) {
     createBloodText('DARK', centerX, centerY);
 }
 
+// Текстовый эффект
 function createBloodText(text, x, y) {
     const textEffect = document.createElement('div');
     textEffect.className = 'blood-text-effect';
@@ -324,6 +337,7 @@ function createBloodText(text, x, y) {
     }, 1200);
 }
 
+// Аудио эффекты
 function initAudioEffects() {
     try {
         if (typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined') {
@@ -345,6 +359,7 @@ function playDarkSound() {
     }
 }
 
+// Кровавый курсор
 function initBloodCursor() {
     const cursor = document.getElementById('blood-cursor');
     if (!cursor) return;
@@ -399,6 +414,7 @@ function logDarkClick(url) {
     console.log(`🩸 Мрачный клик: ${url}`);
 }
 
+// Кровавый дождь
 function createBloodRain() {
     setInterval(() => {
         if (Math.random() > 0.7) {
@@ -434,6 +450,7 @@ function createBloodRain() {
     }, 150);
 }
 
+// Эффекты глитча
 function initGlitchEffects() {
     const glitchElements = document.querySelectorAll('.nickname, .username, .status-text, .price-line');
     
@@ -456,6 +473,7 @@ function initGlitchEffects() {
     });
 }
 
+// Текстовые эффекты
 function initTextEffects() {
     const priceDetails = document.querySelector('.price-details');
     if (!priceDetails) return;
