@@ -1,3 +1,40 @@
+// Функция для обработки ошибок загрузки аватарки
+function handleAvatarError(img) {
+    console.log('⚠️ Аватарка не найдена в img/avatar.jpg');
+    
+    // Показываем запасную аватарку
+    const fallback = document.querySelector('.fallback-avatar');
+    if (fallback) {
+        fallback.style.display = 'flex';
+    }
+    
+    // Меняем инструкцию
+    const instruction = document.querySelector('.instruction-text');
+    if (instruction) {
+        instruction.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Аватарка не найдена!';
+        instruction.style.color = '#ff0000';
+    }
+    
+    // Предлагаем альтернативу
+    const details = document.querySelector('.instruction-details');
+    if (details) {
+        details.innerHTML = 'Создайте папку "img" и поместите туда файл "avatar.jpg"';
+        details.style.color = '#990000';
+    }
+}
+
+// В начале initAvatarAnimation добавьте:
+function initAvatarAnimation() {
+    const avatar = document.getElementById('avatar');
+    if (!avatar) return;
+    
+    // Проверяем, загрузилась ли аватарка
+    if (avatar.complete && avatar.naturalHeight === 0) {
+        handleAvatarError(avatar);
+    }
+    
+    // ... остальной код функции
+}
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🩸 Мрачный киберпанк активирован');
     
