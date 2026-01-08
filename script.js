@@ -33,8 +33,49 @@ function initAvatarAnimation() {
         handleAvatarError(avatar);
     }
     
-    // ... остальной код функции
+    avatar.addEventListener('mouseenter', function() {
+        this.style.transition = 'transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        this.style.transform = 'rotate(5deg) scale(1.05)';
+        
+        // Эффект свечения аватара
+        const glow = document.querySelector('.avatar-glow');
+        if (glow) {
+            glow.style.opacity = '0.8';
+            glow.style.animation = 'glowPulse 0.5s infinite alternate';
+        }
+    });
+    
+    avatar.addEventListener('mouseleave', function() {
+        this.style.transform = 'rotate(0deg) scale(1)';
+        
+        // Сброс свечения
+        const glow = document.querySelector('.avatar-glow');
+        if (glow) {
+            glow.style.opacity = '0.5';
+            glow.style.animation = 'glowPulse 3s infinite alternate';
+        }
+    });
+    
+    // Динамическое изменение кровавого эффекта
+    setInterval(() => {
+        const blood = document.querySelector('.avatar-blood');
+        if (blood) {
+            const x = 20 + Math.random() * 60;
+            const y = 20 + Math.random() * 60;
+            blood.style.background = `
+                radial-gradient(circle at ${x}% ${y}%, 
+                    transparent 30%, 
+                    rgba(139, 0, 0, ${0.3 + Math.random() * 0.3}) 60%,
+                    transparent 70%),
+                radial-gradient(circle at ${100 - x}% ${100 - y}%, 
+                    transparent 40%, 
+                    rgba(255, 0, 0, ${0.2 + Math.random() * 0.2}) 65%,
+                    transparent 75%)
+            `;
+        }
+    }, 3000);
 }
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🩸 Мрачный киберпанк активирован');
     
@@ -129,53 +170,6 @@ function initBloodEffects() {
             }, 300);
         });
     });
-}
-
-function initAvatarAnimation() {
-    const avatar = document.getElementById('avatar');
-    if (!avatar) return;
-    
-    avatar.addEventListener('mouseenter', function() {
-        this.style.transition = 'transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-        this.style.transform = 'rotate(5deg) scale(1.05)';
-        
-        // Эффект свечения аватара
-        const glow = document.querySelector('.avatar-glow');
-        if (glow) {
-            glow.style.opacity = '0.8';
-            glow.style.animation = 'glowPulse 0.5s infinite alternate';
-        }
-    });
-    
-    avatar.addEventListener('mouseleave', function() {
-        this.style.transform = 'rotate(0deg) scale(1)';
-        
-        // Сброс свечения
-        const glow = document.querySelector('.avatar-glow');
-        if (glow) {
-            glow.style.opacity = '0.5';
-            glow.style.animation = 'glowPulse 3s infinite alternate';
-        }
-    });
-    
-    // Динамическое изменение кровавого эффекта
-    setInterval(() => {
-        const blood = document.querySelector('.avatar-blood');
-        if (blood) {
-            const x = 20 + Math.random() * 60;
-            const y = 20 + Math.random() * 60;
-            blood.style.background = `
-                radial-gradient(circle at ${x}% ${y}%, 
-                    transparent 30%, 
-                    rgba(139, 0, 0, ${0.3 + Math.random() * 0.3}) 60%,
-                    transparent 70%),
-                radial-gradient(circle at ${100 - x}% ${100 - y}%, 
-                    transparent 40%, 
-                    rgba(255, 0, 0, ${0.2 + Math.random() * 0.2}) 65%,
-                    transparent 75%)
-            `;
-        }
-    }, 3000);
 }
 
 function createDarkParticles(element) {
