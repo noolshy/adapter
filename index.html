@@ -26,13 +26,32 @@
     <!-- Главный контейнер -->
     <main class="container">
         <!-- Аватар и информация -->
-        <section class="profile-section">
-            <div class="avatar-container">
-                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Смертников" class="avatar" id="avatar">
-                <div class="avatar-blood"></div>
-                <div class="blood-drip"></div>
-                <div class="avatar-glow"></div>
-            </div>
+<div class="avatar-container">
+    <!-- ЛОКАЛЬНАЯ АВАТАРКА -->
+    <!-- ПУТЬ К ФАЙЛУ: img/avatar.jpg -->
+    <img src="img/avatar.jpg" alt="Зорф" class="avatar" id="avatar" onerror="handleAvatarError(this)">
+    
+    <!-- Запасная аватарка (автоматически загрузится при ошибке) -->
+    <div class="fallback-avatar">
+        <i class="fas fa-user-secret"></i>
+        <span>Загрузите аватарку в папку img/</span>
+    </div>
+    
+    <div class="avatar-blood"></div>
+    <div class="blood-drip"></div>
+    <div class="avatar-glow"></div>
+</div>
+
+<!-- Инструкция по аватарке -->
+<div class="avatar-instruction">
+    <p class="instruction-text">
+        <i class="fas fa-info-circle"></i> 
+        Аватарка загружается из папки "img/avatar.jpg"
+    </p>
+    <p class="instruction-details">
+        Создайте папку "img" и поместите туда файл "avatar.jpg" (500x500px или больше)
+    </p>
+</div>
             
 <div class="profile-info">
                 <h1 class="nickname">ЗОРФ</h1>
