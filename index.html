@@ -11,27 +11,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Анимированный кровавый туман -->
+
     <div class="blood-fog"></div>
     
-    <!-- Анимированные тёмные кресты -->
+    
     <div class="blood-crosses"></div>
     
-    <!-- Анимированный мрачный фон -->
+    
     <div class="cyber-background"></div>
     
-    <!-- Глубокие тени -->
+    
     <div class="deep-shadows"></div>
     
-    <!-- Главный контейнер -->
+  
     <main class="container">
-        <!-- Аватар и информация -->
+      
         <div class="avatar-container">
-            <!-- ЛОКАЛЬНАЯ АВАТАРКА -->
-            <!-- ПУТЬ К ФАЙЛУ: img/avatar.jpg -->
+         
             <img src="img/avatar.jpg" alt="Зорф" class="avatar" id="avatar" onerror="handleAvatarError(this)">
             
-            <!-- Запасная аватарка (автоматически загрузится при ошибке) -->
+  
             <div class="fallback-avatar">
                 <i class="fas fa-user-secret"></i>
                 <span>Загрузите аватарку в папку img/</span>
@@ -42,7 +41,6 @@
             <div class="avatar-glow"></div>
         </div>
 
-        <!-- Инструкция по аватарке -->
         <div class="avatar-instruction">
             <p class="instruction-text">
                 <i class="fas fa-skull-crossbones"></i> 
@@ -53,13 +51,13 @@
             </p>
         </div>
         
-        <!-- Секция профиля -->
+
         <section class="profile-section">
             <div class="profile-info">
                 <h1 class="nickname">ЗОРФ</h1>
                 <div class="username">noolshy</div>
                 
-                <!-- Разделитель -->
+            
                 <div class="separator">
                     <div class="separator-line"></div>
                     <div class="separator-dot"></div>
@@ -91,7 +89,7 @@
             <div class="profile-glitch"></div>
         </section>
 
-        <!-- Кнопки на одном уровне -->
+     
         <section class="buttons-section">
             <div class="buttons-row">
                 <a href="https://noolshy.github.io/market/" class="blood-btn channel-btn" target="_blank">
@@ -130,15 +128,12 @@
         </section>
     </main>
 
-    <!-- Аудио для эффектов -->
     <audio id="hover-sound" preload="auto">
         <source src="https://assets.mixkit.co/sfx/preview/mixkit-sci-fi-horror-alarm-905.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Кровавый курсор -->
     <div id="blood-cursor"></div>
 
-    <!-- Статические помехи -->
     <div class="static-overlay"></div>
 
     <script src="script.js"></script>
