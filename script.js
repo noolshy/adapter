@@ -1,21 +1,21 @@
-// Функция для обработки ошибок загрузки аватарки
+
 function handleAvatarError(img) {
     console.log('⚠️ Аватарка не найдена в img/avatar.jpg');
     
-    // Показываем запасную аватарку
+ 
     const fallback = document.querySelector('.fallback-avatar');
     if (fallback) {
         fallback.style.display = 'flex';
     }
     
-    // Меняем инструкцию
+   
     const instruction = document.querySelector('.instruction-text');
     if (instruction) {
         instruction.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Аватарка не найдена!';
         instruction.style.color = '#ff0000';
     }
     
-    // Предлагаем альтернативу
+
     const details = document.querySelector('.instruction-details');
     if (details) {
         details.innerHTML = 'Создайте папку "img" и поместите туда файл "avatar.jpg"';
@@ -23,12 +23,11 @@ function handleAvatarError(img) {
     }
 }
 
-// Анимация аватарки
+
 function initAvatarAnimation() {
     const avatar = document.getElementById('avatar');
     if (!avatar) return;
-    
-    // Проверяем, загрузилась ли аватарка
+   
     if (avatar.complete && avatar.naturalHeight === 0) {
         handleAvatarError(avatar);
     }
@@ -37,7 +36,7 @@ function initAvatarAnimation() {
         this.style.transition = 'transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
         this.style.transform = 'rotate(5deg) scale(1.05)';
         
-        // Эффект свечения аватара
+       
         const glow = document.querySelector('.avatar-glow');
         if (glow) {
             glow.style.opacity = '0.8';
@@ -48,7 +47,7 @@ function initAvatarAnimation() {
     avatar.addEventListener('mouseleave', function() {
         this.style.transform = 'rotate(0deg) scale(1)';
         
-        // Сброс свечения
+     
         const glow = document.querySelector('.avatar-glow');
         if (glow) {
             glow.style.opacity = '0.5';
@@ -56,7 +55,7 @@ function initAvatarAnimation() {
         }
     });
     
-    // Динамическое изменение кровавого эффекта
+ 
     setInterval(() => {
         const blood = document.querySelector('.avatar-blood');
         if (blood) {
@@ -76,7 +75,7 @@ function initAvatarAnimation() {
     }, 3000);
 }
 
-// Основная инициализация
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🩸 Мрачный киберпанк активирован');
     
@@ -88,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initGlitchEffects();
     initTextEffects();
     
-    // Инициализация эффектов статуса
+   
     const statusDot = document.querySelector('.status-dot');
     if (statusDot) {
         setInterval(() => {
@@ -99,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
     
-    // Инициализация текстовых эффектов
     const nickname = document.querySelector('.nickname');
     if (nickname) {
         setInterval(() => {
@@ -112,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 2000);
     }
     
-    // Анимация разделителя
+
     const separatorDot = document.querySelector('.separator-dot');
     if (separatorDot) {
         setInterval(() => {
@@ -121,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Эффекты для кнопок
 function initBloodEffects() {
     const buttons = document.querySelectorAll('.blood-btn');
     
@@ -131,13 +128,13 @@ function initBloodEffects() {
             createDarkParticles(this);
             playDarkSound();
             
-            // Усиление пульсации
+           
             const pulse = this.querySelector('.btn-pulse');
             if (pulse) {
                 pulse.style.animation = 'darkPulse 1s infinite';
             }
             
-            // Эффект напряжения
+          
             const glow = this.querySelector('.btn-glow-red');
             if (glow) {
                 glow.style.opacity = '1';
@@ -147,13 +144,13 @@ function initBloodEffects() {
         button.addEventListener('mouseleave', function() {
             this.classList.remove('active');
             
-            // Возвращение обычной пульсации
+         
             const pulse = this.querySelector('.btn-pulse');
             if (pulse) {
                 pulse.style.animation = 'darkPulse 3s infinite';
             }
             
-            // Сброс эффекта напряжения
+           
             const glow = this.querySelector('.btn-glow-red');
             if (glow) {
                 glow.style.opacity = '0';
@@ -163,7 +160,7 @@ function initBloodEffects() {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Эффект нажатия
+          
             this.style.transform = 'scale(0.95) rotate(10deg)';
             setTimeout(() => {
                 this.style.transform = '';
@@ -171,10 +168,10 @@ function initBloodEffects() {
             
             logDarkClick(this.href);
             
-            // Создание взрыва частиц
+           
             createDarkExplosion(this);
             
-            // Открытие ссылки через 300мс для завершения анимации
+          
             setTimeout(() => {
                 window.open(this.href, '_blank');
             }, 300);
@@ -182,7 +179,7 @@ function initBloodEffects() {
     });
 }
 
-// Частицы для эффектов
+
 function createDarkParticles(element) {
     const rect = element.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
@@ -233,7 +230,7 @@ function createDarkParticles(element) {
     }
 }
 
-// Эффект взрыва
+
 function createDarkExplosion(element) {
     const rect = element.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
@@ -283,11 +280,11 @@ function createDarkExplosion(element) {
         }, 1600);
     }
     
-    // Создание текстового эффекта
+
     createBloodText('DARK', centerX, centerY);
 }
 
-// Текстовый эффект
+
 function createBloodText(text, x, y) {
     const textEffect = document.createElement('div');
     textEffect.className = 'blood-text-effect';
@@ -337,7 +334,7 @@ function createBloodText(text, x, y) {
     }, 1200);
 }
 
-// Аудио эффекты
+
 function initAudioEffects() {
     try {
         if (typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined') {
@@ -359,7 +356,7 @@ function playDarkSound() {
     }
 }
 
-// Кровавый курсор
+
 function initBloodCursor() {
     const cursor = document.getElementById('blood-cursor');
     if (!cursor) return;
@@ -414,7 +411,7 @@ function logDarkClick(url) {
     console.log(`🩸 Мрачный клик: ${url}`);
 }
 
-// Кровавый дождь
+
 function createBloodRain() {
     setInterval(() => {
         if (Math.random() > 0.7) {
@@ -450,7 +447,7 @@ function createBloodRain() {
     }, 150);
 }
 
-// Эффекты глитча
+
 function initGlitchEffects() {
     const glitchElements = document.querySelectorAll('.nickname, .username, .status-text, .price-line');
     
@@ -473,7 +470,7 @@ function initGlitchEffects() {
     });
 }
 
-// Текстовые эффекты
+
 function initTextEffects() {
     const priceDetails = document.querySelector('.price-details');
     if (!priceDetails) return;
@@ -486,7 +483,6 @@ function initTextEffects() {
     }, 3000);
 }
 
-// Добавление CSS для эффектов
 const style = document.createElement('style');
 style.textContent = `
     .dark-particle, .dark-explosion {
@@ -529,7 +525,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Запуск анимации статуса
+
 setInterval(() => {
     const status = document.querySelector('.status');
     if (status) {
